@@ -1,0 +1,40 @@
+Env
+  - RandomMG
+    -- state and action space
+    -- p and r
+    -- sampling oracle
+    -- feature (for function approximation)
+  - BoardGame
+
+Game Simulator in Full-info
+  (For Decentralized Policy Iteration)
+  send state to agents
+  agents output policies for each states
+  1. Calculate x_t(s) r(s,.,.) y_t(s) and x_t(s) p(s'|s,.,.) y_t(s) on each state  (time & space: S^2AB)
+  2. Calculate x_t(s) Q_{x,y}(s,.,.) y_t(s)  (using power iteration)
+
+  (For Centralized Value Iteration)
+  Calculate the V*(s) of each state and solve min-max problem
+
+ACLearner
+  (parameter: optimistic step)
+  (learning rate)
+  - Policy (S*A)
+  - Value (S)
+  - V_t(s)
+  - Q_t(s,a)
+  - Each round: 
+      -- send policy to Simulator, 
+      -- get xry and xpy from simulator
+      -- update its Q and V
+      -- update policy using Q and V
+
+PGLearner
+  (parameter: optimistic step)
+  (learning rate)
+  - Policy (S*A)
+  - Each Round: 
+      -- send policy to Simulator
+      -- update policy using Q_(x,y)
+
+   
