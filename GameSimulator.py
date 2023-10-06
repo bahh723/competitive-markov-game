@@ -3,6 +3,8 @@ from Agent import PAgent
 import numpy as np
 import util
 import matplotlib.pyplot as plt
+import os
+
 
 
 class GameSimulator:
@@ -14,6 +16,8 @@ class GameSimulator:
         eta = 0.125 / np.sqrt(self.env.A + self.env.B)
         self.P1 = PAgent(self.env.S, self.env.A, self.gamma, eta)
         self.P2 = PAgent(self.env.S, self.env.B, self.gamma, eta)
+        if not os.path.exists('figure/tmp'):
+            os.makedirs('figure/tmp')
 
     def simulate_full_info(self):
         print("=== offline solving the game ===")

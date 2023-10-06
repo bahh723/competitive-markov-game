@@ -1,5 +1,4 @@
 import numpy as np
-#import nashpy as nash
 
 def SimplexProj(x):
     u = np.sort(x)[::-1]
@@ -20,23 +19,6 @@ def dualGap(G, x, y):
 
 def evalGame(G, x, y):
     return np.inner(x, np.matmul(G, y)) 
-
-"""
-def solveGame_nash(G):
-    A = G.shape[0]
-    B = G.shape[1]
-
-    H = -G    # to apply nashpy, we convert min-max to max-min
-
-    rps = nash.Game(H)
-    eqs = rps.lemke_howson_enumeration()
-    eqs = list(eqs)[0]
-    x = eqs[0]
-    y = eqs[1]
-    rho = -rps[x,y][0]    # convert back to min-max
-
-    return rho, x, y
-"""
 
 def solveGame(G, x_init=None, y_init=None, eps=None, max_iter=None):
     A = G.shape[0]
